@@ -46,7 +46,7 @@ Usage: d2c.sh
 
 `d2c` UPDATES existing records. Please, create them in Cloudflare Dashboard before running this script.
 
-The configuration is done in `/etc/d2c/*.toml` files in TOML format.
+The default configuration is done in `/etc/d2c/*.toml` files in TOML format. Optionally accepts an argument for a different configuration directory (ex. d2c.sh "/path/to/configs/").
 Configuration file structure:
 
 [api]

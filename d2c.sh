@@ -5,14 +5,14 @@ cloudflare_base="https://api.cloudflare.com/client/v4"
 
 # print usage text and exit
 print_usage() {
-    echo '
+    echo "
     d2c (Dynamic DNS Cloudflare): Update Cloudflare DNS 'A' and 'AAAA' records for your dynamic IP.
 
     Usage: d2c.sh
 
     `d2c` UPDATES existing records. Please, create them in Cloudflare Dashboard before running this script.
 
-    The configuration is done in `/etc/d2c/*.toml` files in TOML format.
+    The default configuration is done in `/etc/d2c/*.toml` files in TOML format. Optionally accepts an argument for a different configuration directory (ex. d2c.sh "/path/to/configs/").
     Configuration file structure:
 
     ```
@@ -33,13 +33,15 @@ print_usage() {
     proxy = false
     ipv6 = true # Optional, for 'AAAA' records
     ```
-'
+"
 }
 
 # print usage if requested
 if [ "$1" = "help" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     print_usage
     exit
+else
+    config_file_dir="$1"
 fi
 
 # ensure yq is installed
